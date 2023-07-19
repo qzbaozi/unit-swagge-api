@@ -10,6 +10,8 @@
     <version>${version}</version>
     <modules>
         <module>unit-swagger-api-core</module>
+        <module>unit-swagger-api-spring-start</module>
+        <module>unit-swagger-api-example</module>
     </modules>
 
     <properties>
