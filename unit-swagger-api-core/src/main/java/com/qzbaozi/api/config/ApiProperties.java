@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @ConfigurationProperties(prefix = ApiProperties.PROPERTY_PREFIX)
 public class ApiProperties {
-    public static final String PROPERTY_PREFIX = "spring.unit-swagger-api";
+    public static final String PROPERTY_PREFIX = "unit-swagger-api";
     /**
      * 接口默认前缀
      */
