@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>unit-swagge-api</artifactId>
-        <groupId>com.qzbaozi</groupId>
+        <groupId>io.github.qzbaozi</groupId>
         <version>1.0.0</version>
     </parent>
 
@@ -22,7 +22,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.qzbaozi</groupId>
+            <groupId>io.github.qzbaozi</groupId>
             <artifactId>unit-swagger-api-spring-start</artifactId>
             <version>1.0.0</version>
         </dependency>
