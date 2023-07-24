@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0.1</version>
 
+    <name>${project.groupId}:${project.artifactId}</name>
     <description>自动扫描 @service 生成 swagger api</description>
     <url>https://github.com/qzbaozi/unit-swagge-api</url>
 
