@@ -2,7 +2,9 @@ package com.qzbaozi.api.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Service;
 
+import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,4 +37,15 @@ public class ApiProperties {
      * 开启debug模式
      */
     private boolean serviceDebug = true;
+
+    /**
+     * 仅转换当前class实现的方法
+     */
+    private boolean classOnly = true;
+
+    /**
+     * 扫描注解
+     */
+    private Class<? extends Annotation> annotation = Service.class;
+
 }

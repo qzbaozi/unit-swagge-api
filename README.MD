@@ -4,7 +4,7 @@
     <dependency>
         <groupId>io.github.qzbaozi</groupId>
         <artifactId>unit-swagger-api-core</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </dependency>
 ##1.1.2、启动
     
@@ -18,7 +18,7 @@
       <dependency>
             <groupId>io.github.qzbaozi</groupId>
             <artifactId>unit-swagger-api-spring-start</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
       </dependency>
 ##2、配置说明
 service扫描顺序：[DefaultServiceSelector](unit-swagger-api-core/src/main/java/com/qzbaozi/api/swagger/selector/DefaultServiceSelector.java):
@@ -31,8 +31,10 @@ application.yml
         enabled: true
         #service生成uri前缀
         uriPrefix: xx
-        #扫描所有service注解
-        serviceDebug: true
+        #扫描所有unit-swagger-api.annotation注解，默认true
+        debug: true
+        #仅转换当前类实现的方法，默认true
+        classOnly: true
         #扫描路径
         path:
             - com.ser.*

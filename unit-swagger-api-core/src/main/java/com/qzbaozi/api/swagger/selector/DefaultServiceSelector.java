@@ -4,7 +4,6 @@ import com.qzbaozi.api.annotation.UnitApiMapping;
 import com.qzbaozi.api.config.ApiProperties;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.core.annotation.AnnotatedElementUtils;
-import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -23,14 +22,14 @@ public class DefaultServiceSelector implements ServiceMethodSelector {
 
     @Override
     public boolean isHandler(Class<?> beanType) {
-        if (!AnnotatedElementUtils.hasAnnotation(beanType, Service.class)) {
+        if (!AnnotatedElementUtils.hasAnnotation(beanType, apiProperties.getScanClass())) {
             return false;
         }
 
         for (String path : apiProperties.getPath()) {
             String name = AopUtils.isCglibProxy(beanType) ? beanType.getSuperclass().getName() : beanType.getName();
 
-            if (path.endsWith(".*")) {
+            if (path.endsWith("*")) {
                 return name.startsWith(path.replace("*", ""));
             } else {
                 return name.equals(path);
@@ -46,10 +45,17 @@ public class DefaultServiceSelector implements ServiceMethodSelector {
     }
 
     @Override
-    public boolean supportsMethodType(Method method) {
+    public boolean supportsMethodType(Method method, Class<?> handlerType) {
         if (Modifier.isStatic(method.getModifiers())) {
             return false;
         }
+
+        if (apiProperties.isClassOnly()) {
+            if (!method.getDeclaringClass().getSimpleName().equals(handlerType.getSimpleName())) {
+                return false;
+            }
+        }
+
         return Modifier.isPublic(method.getModifiers()) ||
                 AnnotatedElementUtils.hasAnnotation(method, UnitApiMapping.class);
     }

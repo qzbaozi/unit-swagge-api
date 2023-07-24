@@ -10,7 +10,7 @@ import java.util.List;
  * @date 2023/7/4 17:28
  */
 @Service
-public class UserServiceIml implements UserService {
+public class UserServiceIml extends A implements UserService {
 
     @Override
     public User get(String name) {
@@ -31,5 +31,10 @@ public class UserServiceIml implements UserService {
     public User get(User user, String name) {
         user.setName(name);
         return user;
+    }
+
+    @Override
+    public String a() {
+        return super.a();
     }
 }

@@ -51,7 +51,7 @@ public class ServiceHandlerMapping extends RequestMappingInfoHandlerMapping {
      */
     @Override
     protected RequestMappingInfo getMappingForMethod(Method method, Class<?> handlerType) {
-        if (!serviceMethodSelector.supportsMethodType(method)) {
+        if (!serviceMethodSelector.supportsMethodType(method, handlerType)) {
             return null;
         }
 

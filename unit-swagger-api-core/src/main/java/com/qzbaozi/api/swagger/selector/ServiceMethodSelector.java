@@ -22,7 +22,8 @@ public interface ServiceMethodSelector {
      * 支持方法
      *
      * @param method
+     * @param handlerType
      * @return
      */
-    boolean supportsMethodType(Method method);
+    boolean supportsMethodType(Method method, Class<?> handlerType);
 }

@@ -6,6 +6,6 @@ unit-swagger-api:
   uriPrefix: xx
   serviceDebug: true
   path:
-    - com.ser.*
+    - com.service.*
   header:
     - xx:144
