@@ -1,19 +1,26 @@
 #使用说明
-##1、引用maven
+##1.1.1、仅引用核心包
 
     <dependency>
         <groupId>io.github.qzbaozi</groupId>
         <artifactId>unit-swagger-api-core</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </dependency>
-##2、启动
+##1.1.2、启动
     
     @Configuration
     @EnableUnitSwaggerApi
     public class UnitSwaggerApiAutoConfiguration {
     }
 
-##3、配置说明
+##1.2.1、引用自启动包
+
+      <dependency>
+            <groupId>io.github.qzbaozi</groupId>
+            <artifactId>unit-swagger-api-spring-start</artifactId>
+            <version>1.0.1</version>
+      </dependency>
+##2、配置说明
 service扫描顺序：[DefaultServiceSelector](unit-swagger-api-core/src/main/java/com/qzbaozi/api/swagger/selector/DefaultServiceSelector.java):
 path>serviceDebug>[@UnitApiMapping](unit-swagger-api-core/src/main/java/com/qzbaozi/api/annotation/UnitApiMapping.java)
 
