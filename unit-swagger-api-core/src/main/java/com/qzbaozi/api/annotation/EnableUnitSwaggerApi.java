@@ -1,6 +1,7 @@
 package com.qzbaozi.api.annotation;
 
 import com.qzbaozi.api.config.ServiceRequestMappingConfiguration;
+import com.qzbaozi.api.config.SwaggerSupportConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;
@@ -14,6 +15,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import(ServiceRequestMappingConfiguration.class)
+@Import({ServiceRequestMappingConfiguration.class, SwaggerSupportConfiguration.class})
 public @interface EnableUnitSwaggerApi {
 }
