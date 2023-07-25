@@ -2,9 +2,7 @@ package com.qzbaozi.api.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Service;
 
-import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +43,8 @@ public class ApiProperties {
 
     /**
      * 扫描注解
+     * 示例：org.springframework.stereotype.Service
      */
-    private Class<? extends Annotation> annotation = Service.class;
+    private String annotationPath;
 
 }

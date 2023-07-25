@@ -4,7 +4,7 @@
     <dependency>
         <groupId>io.github.qzbaozi</groupId>
         <artifactId>unit-swagger-api-core</artifactId>
-        <version>1.0.2</version>
+        <version>1.1.0</version>
     </dependency>
 ##1.1.2、启动
     
@@ -18,7 +18,7 @@
       <dependency>
             <groupId>io.github.qzbaozi</groupId>
             <artifactId>unit-swagger-api-spring-start</artifactId>
-            <version>1.0.2</version>
+            <version>1.1.0</version>
       </dependency>
 ##2、配置说明
 service扫描顺序：[DefaultServiceSelector](unit-swagger-api-core/src/main/java/com/qzbaozi/api/swagger/selector/DefaultServiceSelector.java):

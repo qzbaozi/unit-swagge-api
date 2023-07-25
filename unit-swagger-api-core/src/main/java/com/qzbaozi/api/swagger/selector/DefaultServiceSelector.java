@@ -2,9 +2,12 @@ package com.qzbaozi.api.swagger.selector;
 
 import com.qzbaozi.api.annotation.UnitApiMapping;
 import com.qzbaozi.api.config.ApiProperties;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.core.annotation.AnnotatedElementUtils;
+import org.springframework.stereotype.Service;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
@@ -12,9 +15,12 @@ import java.lang.reflect.Modifier;
  * @author sfh
  * @date 2023/7/13 15:58
  */
+@Slf4j
 public class DefaultServiceSelector implements ServiceMethodSelector {
 
     ApiProperties apiProperties;
+    Class<? extends Annotation> annotation = null;
+
 
     public DefaultServiceSelector(ApiProperties apiProperties) {
         this.apiProperties = apiProperties;
@@ -22,7 +28,10 @@ public class DefaultServiceSelector implements ServiceMethodSelector {
 
     @Override
     public boolean isHandler(Class<?> beanType) {
-        if (!AnnotatedElementUtils.hasAnnotation(beanType, apiProperties.getScanClass())) {
+
+        Class<? extends Annotation> annotation = this.getAnnotation();
+
+        if (!AnnotatedElementUtils.hasAnnotation(beanType, annotation)) {
             return false;
         }
 
@@ -58,5 +67,27 @@ public class DefaultServiceSelector implements ServiceMethodSelector {
 
         return Modifier.isPublic(method.getModifiers()) ||
                 AnnotatedElementUtils.hasAnnotation(method, UnitApiMapping.class);
+    }
+
+    /**
+     * 获取配置过滤注解
+     *
+     * @return
+     */
+    private Class<? extends Annotation> getAnnotation() {
+        if (annotation != null) {
+            return annotation;
+        }
+        if (apiProperties.getAnnotationPath() != null) {
+            try {
+                annotation = (Class<? extends Annotation>) Class.forName(apiProperties.getAnnotationPath());
+            } catch (Exception e) {
+                log.error("AnnotationPath is error :{}", apiProperties.getAnnotationPath());
+            }
+        }
+        if (annotation == null) {
+            annotation = Service.class;
+        }
+        return annotation;
     }
 }

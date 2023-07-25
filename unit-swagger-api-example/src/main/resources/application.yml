@@ -5,6 +5,7 @@ unit-swagger-api:
   enabled: true
   uriPrefix: xx
   serviceDebug: true
+  annotationPath: org.springframework.stereotype.Servicea
   path:
     - com.service.*
   header:
